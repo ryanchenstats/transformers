@@ -638,7 +638,7 @@ class LlamaModel(LlamaPreTrainedModel):
         elif input_ids is not None:
             batch_size, seq_length = input_ids.shape
         elif inputs_embeds is not None:
-            print(inputs_embeds.shape)
+            inputs_embeds = inputs_embeds.squeeze(0)
             batch_size, seq_length, _ = inputs_embeds.shape
         else:
             raise ValueError("You have to specify either decoder_input_ids or decoder_inputs_embeds")
